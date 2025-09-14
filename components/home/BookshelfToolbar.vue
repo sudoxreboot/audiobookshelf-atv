@@ -5,16 +5,44 @@
         <p v-show="!selectedSeriesName" class="pt-1">{{ $formatNumber(totalEntities) }} {{ entityTitle }}</p>
         <p v-show="selectedSeriesName" class="ml-2 pt-1">{{ selectedSeriesName }} ({{ $formatNumber(totalEntities) }})</p>
         <div class="flex-grow" />
-        <span v-if="page == 'library' || seriesBookPage" class="material-symbols text-2xl px-2" @click="changeView">{{ !bookshelfListView ? 'view_list' : 'grid_view' }}</span>
+        <span
+          v-if="page == 'library' || seriesBookPage"
+          class="material-symbols text-2xl px-2"
+          tabindex="0"
+          @click="changeView"
+          @keyup.enter="changeView"
+        >{{ !bookshelfListView ? 'view_list' : 'grid_view' }}</span>
         <template v-if="page === 'library'">
           <div class="relative flex items-center px-2">
-            <span class="material-symbols text-2xl" @click="showFilterModal = true">filter_alt</span>
+            <span
+              class="material-symbols text-2xl"
+              tabindex="0"
+              @click="showFilterModal = true"
+              @keyup.enter="showFilterModal = true"
+            >filter_alt</span>
             <div v-show="hasFilters" class="absolute top-0 right-2 w-2 h-2 rounded-full bg-success border border-green-300 shadow-sm z-10 pointer-events-none" />
           </div>
-          <span class="material-symbols text-2xl px-2" @click="showSortModal = true">sort</span>
+          <span
+            class="material-symbols text-2xl px-2"
+            tabindex="0"
+            @click="showSortModal = true"
+            @keyup.enter="showSortModal = true"
+          >sort</span>
         </template>
-        <span v-if="seriesBookPage" class="material-symbols text-2xl px-2" @click="downloadSeries">download</span>
-        <span v-if="(page == 'library' && isBookLibrary) || seriesBookPage" class="material-symbols text-2xl px-2" @click="showMoreMenuDialog = true">more_vert</span>
+        <span
+          v-if="seriesBookPage"
+          class="material-symbols text-2xl px-2"
+          tabindex="0"
+          @click="downloadSeries"
+          @keyup.enter="downloadSeries"
+        >download</span>
+        <span
+          v-if="(page == 'library' && isBookLibrary) || seriesBookPage"
+          class="material-symbols text-2xl px-2"
+          tabindex="0"
+          @click="showMoreMenuDialog = true"
+          @keyup.enter="showMoreMenuDialog = true"
+        >more_vert</span>
       </div>
     </div>
 
